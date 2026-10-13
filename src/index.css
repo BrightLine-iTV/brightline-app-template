@@ -1,0 +1,12 @@
+/* CSS entry point. Tailwind first, then the theme that customizes it. */
+@import 'tailwindcss';
+@import './styles/theme.css';
+
+/* Preflight already resets margins and applies --font-sans. */
+@layer base {
+    html,
+    body,
+    #root {
+        height: 100%;
+    }
+}

@@ -1,0 +1,187 @@
+/*
+ * Design tokens: the single source of truth for colors, typography, shadows
+ * and motion (Tailwind v4).
+ *
+ * Setup: src/main.tsx → src/index.css → "tailwindcss" + this file, compiled by
+ * `@tailwindcss/vite`. v4 is configured in CSS, so there is no
+ * tailwind.config.js (JS configs are ignored unless loaded with `@config`) and
+ * no postcss.config.js (the Vite plugin already handles imports and vendor
+ * prefixes).
+ *
+ * Every token in `@theme` generates utilities from its namespace and is also
+ * available as a CSS variable:
+ *   --color-primary-50 → bg-primary-50, text-primary-50, var(--color-primary-50)
+ *   --text-sm → text-sm · --shadow-popover → shadow-popover
+ *   --animate-fade-in → animate-fade-in
+ * Use `:root` instead for variables that should not become utilities.
+ * Prefer these utilities over arbitrary values (`text-[13px]`, `bg-[#…]`).
+ *
+ * ESLint (`cssConfigPath`) and Prettier (`tailwindStylesheet`) read the theme
+ * through src/index.css.
+ *
+ * Docs: https://tailwindcss.com/docs/theme
+ */
+
+@theme {
+    /* Drop Tailwind's default palette so only brand colors are available. */
+    --color-*: initial;
+    --color-white: #ffffff;
+    --color-black: #000000;
+
+    /* Palette */
+    --color-primary-90: #004b9a;
+    --color-primary-80: #0062bf;
+    --color-primary-70: #1a8efb;
+    --color-primary-60: #379cfb;
+    --color-primary-50: #44a1f8;
+    --color-primary-40: #62b3f9;
+    --color-primary-30: #90c9fa;
+    --color-primary-20: #bfe2fd;
+    --color-primary-10: #edf6ff;
+    --color-primary: #44a1f8;
+
+    --color-secondary-90: #081449;
+    --color-secondary-80: #0a1a59;
+    --color-secondary-70: #041978;
+    --color-secondary-60: #1225a3;
+    --color-secondary-50: #0327c9;
+    --color-secondary-40: #1d42e1;
+    --color-secondary-30: #4a6bf2;
+    --color-secondary-20: #889efb;
+    --color-secondary-10: #e8ecff;
+    --color-secondary: #0327c9;
+
+    --color-tertiary-90: #2b1d46;
+    --color-tertiary-80: #3a2562;
+    --color-tertiary-70: #4f347e;
+    --color-tertiary-60: #5d3d97;
+    --color-tertiary-50: #6e4db2;
+    --color-tertiary-40: #835dcc;
+    --color-tertiary-30: #a185e1;
+    --color-tertiary-20: #d6c3f9;
+    --color-tertiary-10: #f7f2ff;
+    --color-tertiary: #5d3d97;
+
+    --color-success-90: #003618;
+    --color-success-80: #005428;
+    --color-success-70: #006231;
+    --color-success-60: #007f41;
+    --color-success-50: #00994e;
+    --color-success-40: #2da55c;
+    --color-success-30: #58bf7a;
+    --color-success-20: #9ce2b6;
+    --color-success-10: #f4fff9;
+    --color-success: #007f41;
+
+    --color-error-90: #410002;
+    --color-error-80: #540006;
+    --color-error-70: #690005;
+    --color-error-60: #9a0007;
+    --color-error-50: #dd2121;
+    --color-error-40: #e84c4c;
+    --color-error-30: #f17373;
+    --color-error-20: #ffb4ab;
+    --color-error-10: #fff7f5;
+    --color-error: #dd2121;
+
+    --color-warning-90: #7c4504;
+    --color-warning-80: #995104;
+    --color-warning-70: #c76b00;
+    --color-warning-60: #ec7f00;
+    --color-warning-50: #ff9900;
+    --color-warning-40: #ffb02a;
+    --color-warning-30: #ffc96b;
+    --color-warning-20: #ffe1ad;
+    --color-warning-10: #ffeeda;
+    --color-warning: #ec7f00;
+
+    --color-neutral-90: #171c22;
+    --color-neutral-80: #2c3137;
+    --color-neutral-70: #42474e;
+    --color-neutral-60: #5f656c;
+    --color-neutral-50: #858a94;
+    --color-neutral-40: #bdc0c5;
+    --color-neutral-30: #dee3eb;
+    --color-neutral-20: #f8f8f9;
+    --color-neutral-10: #ffffff;
+    --color-neutral: #858a94;
+
+    /* Surfaces outside the palette */
+    --color-scrim: #0d2c57;
+    --color-canvas: #f6f7f9;
+
+    /* Typography: Inter, self-hosted through @fontsource-variable/inter (main.tsx). */
+    --font-sans: 'Inter Variable', 'Inter', sans-serif;
+    --font-mono: 'Fira Code', ui-monospace, monospace;
+
+    --text-3xs: 0.625rem;
+    --text-3xs--line-height: 0.875rem;
+    --text-2xs: 0.6875rem;
+    --text-2xs--line-height: 1rem;
+    --text-xs: 0.75rem;
+    --text-xs--line-height: 1.125rem;
+    --text-sm: 0.8125rem;
+    --text-sm--line-height: 1.25rem;
+    --text-base: 0.875rem;
+    --text-base--line-height: 1.25rem;
+    --text-md: 0.9375rem;
+    --text-md--line-height: 1.375rem;
+    --text-lg: 1rem;
+    --text-lg--line-height: 1.5rem;
+    --text-xl: 1.125rem;
+    --text-xl--line-height: 1.5rem;
+
+    /* Elevation */
+    --shadow-hairline: 0 1px 2px rgb(16 24 40 / 0.04);
+    --shadow-toolbar: 0 2px 8px rgb(16 24 40 / 0.08);
+    --shadow-popover: 0 12px 32px rgb(16 24 40 / 0.16);
+    --shadow-dialog: 0 24px 64px rgb(13 44 87 / 0.28);
+
+    /* Motion */
+    --animate-fade-in: fade-in 120ms ease-out;
+    --animate-dialog-in: dialog-in 160ms ease-out;
+    --animate-popover-in: popover-in 120ms ease-out;
+    --animate-toast-in: toast-in 180ms ease-out;
+
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes dialog-in {
+        from {
+            opacity: 0;
+            transform: translateY(6px) scale(0.98);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    @keyframes popover-in {
+        from {
+            opacity: 0;
+            transform: translateY(-4px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes toast-in {
+        from {
+            opacity: 0;
+            transform: translateY(8px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}

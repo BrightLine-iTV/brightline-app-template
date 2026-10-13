@@ -1,0 +1,20 @@
+# Dependencies and build output
+node_modules
+dist
+dist-ssr
+*.local
+*.log
+
+# Editors / OS
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.sw?
+
+# Local-only
+.env
+.env.*
+!.env.example
+_to_delete

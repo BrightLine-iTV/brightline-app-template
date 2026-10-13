@@ -1,0 +1,40 @@
+name: Deploy to AWS S3
+
+on:
+    push:
+        branches:
+            - 'main'
+
+jobs:
+    package:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20
+                  cache: npm
+
+            - name: Install dependencies
+              run: npm ci
+
+            - name: Build app
+              run: npm run build
+
+            - name: Upload content as artifact
+              uses: actions/upload-artifact@v4
+              with:
+                  name: s3-deploy-content
+                  path: dist
+
+    upload:
+        needs: package
+        uses: BrightLine-iTV/frontend-analytics-configs/.github/workflows/reusable-s3-upload-trigger.yml@master
+        with:
+            artifact-name: s3-deploy-content
+            s3-bucket: ${{ vars.AWS_S3_BUCKET }}
+        secrets:
+            github-app-private-key: ${{ secrets.WH_PRIVATE_KEY }}
